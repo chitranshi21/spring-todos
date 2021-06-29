@@ -1,0 +1,64 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: todos
+servers:
+  - url: http://localhost:7070
+paths:
+  /todos:
+    get:
+      summary: Gets All Todos
+      operationId: getAllTodos
+      tags:
+        - todos
+      responses:
+        '200':
+          description: get all todos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todos"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: string
+        topic:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: epoch
+      required:
+        - id
+        - topic
+        - description
+    Todos:
+      type: array
+      items:
+        $ref: "#/components/schemas/Todo"
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: integer
+        message:
+          type: string
+      required:
+        - error_code
+        - message
