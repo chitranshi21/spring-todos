@@ -82,6 +82,7 @@
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>
 								<interfaceOnly>true</interfaceOnly>
+								<additionalModelTypeAnnotations>@lombok.Builder @lombok.NoArgsConstructor @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
 							</configOptions>
 							<supportingFilesToGenerate>
 								ApiUtil.java
