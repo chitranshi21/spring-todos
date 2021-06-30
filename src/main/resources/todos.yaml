@@ -12,19 +12,50 @@ paths:
       tags:
         - todos
       responses:
-        '200':
+        200:
           description: get all todos
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Todos"
-        '400':
+        400:
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        '500':
+        500:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Add new todo
+      operationId: postTodo
+      tags:
+        - todos
+      requestBody:
+        description: Add new todo
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
           description: Unexpected error
           content:
             application/json:
@@ -44,10 +75,12 @@ components:
         createdAt:
           type: string
           format: epoch
+        email:
+          type: string
       required:
-        - id
         - topic
         - description
+        - email
     Todos:
       type: array
       items:

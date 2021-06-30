@@ -1,16 +1,10 @@
 spring:
-  application:
-    name: todos-service
-
   data:
     mongodb:
       host: localhost
       port: 27017
       database: todos
       auto-index-creation: true
-
-server:
-  port: 7070
 
 logging:
   level:
