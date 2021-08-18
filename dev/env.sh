@@ -1,0 +1,1 @@
+export SPRING_APPLICATION_NAME="todos-service"

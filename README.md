@@ -3,7 +3,10 @@
 We have a contract in resource/todos.yaml
 
 ## Run MongoDB 
-cd dev folder - `docker compose -f mongo-db-docker-compose.yaml up`
+cd dev folder -
+ ```
+ docker compose -f mongo-db-docker-compose.yaml up
+```
 
 ## Run Keyclock
 `docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 8080:8080 jboss/keycloak`\
