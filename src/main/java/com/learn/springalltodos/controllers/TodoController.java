@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class TodoController implements TodosApi {
     private final TodoService service;
 
     @Override
+    @RolesAllowed({"todo_read_all"})
     public ResponseEntity<List<SwaggerTodo>> getAllTodos() {
         return ResponseEntity.ok(service.getAllTodos());
     }
